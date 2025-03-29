@@ -5,11 +5,9 @@ import "./styles/global.scss";
 
 const App = () => {
   return (
-    <Router
-      basename={import.meta.env.MODE === "development" ? "/" : "/Jeopardy"}
-    >
+    <Router basename="/Jeopardy">
       <Routes>
-        <Route path="/Jeopardy" element={<Game />} />
+        <Route path="/" element={<Game />} />
       </Routes>
     </Router>
   );
