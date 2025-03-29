@@ -47,3 +47,12 @@ input {
     outline: none;
   }
 }
+
+.unsaved-disclaimer {
+  display: inline-block;
+  border-radius: 10px;
+  padding: 4px 10px;
+  margin-bottom: 8px;
+  max-width: fit-content;
+  background: #c70;
+}

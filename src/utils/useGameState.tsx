@@ -9,10 +9,7 @@ export interface GameBoard extends GameData {
   players: Player[];
 }
 
-export const useGameState = (
-  data: GameData,
-  setData: (data: GameData) => void
-) => {
+const useGameState = (data: GameData, setData: (data: GameData) => void) => {
   const [savedBoards, setSavedBoards] = useState<GameBoard[]>([]);
 
   useEffect(() => {
@@ -64,3 +61,5 @@ export const useGameState = (
     deleteBoard,
   };
 };
+
+export default useGameState;

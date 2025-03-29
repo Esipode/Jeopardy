@@ -1,23 +1,28 @@
 import { useMemo, useState } from "react";
 import { isEqual } from "lodash";
 import { DataProps } from "../../../utils/data";
-import { useGameState } from "../../../utils/useGameState";
+import useGameState from "../../../utils/useGameState";
 
 import "../../../styles/SaveLoad.scss";
 
 const SaveLoad = ({ data, setData }: DataProps) => {
   const { savedBoards, saveBoard, loadBoard, deleteBoard } = useGameState(
-    data,
+    JSON.parse(JSON.stringify(data)),
     setData
   );
 
-  const [boardName, setBoardName] = useState("");
+  const [boardName, setBoardName] = useState(data?.boardName || "");
   const [selectedLoadChoice, setSelectedLoadChoice] = useState("");
 
-  // const isUnsaved = useMemo(() => {
-  //   return !savedBoards.find((saved) => isEqual(saved, data));
-  // }, [data]);
-  // console.log(isUnsaved);
+  const isUnsaved = useMemo(() => {
+    const matchingBoardByName = savedBoards.find(
+      (saved) => saved.boardName === boardName
+    );
+    const dataDoesNotMatch = !boardName || !isEqual(matchingBoardByName, data);
+
+    return dataDoesNotMatch;
+  }, [data, boardName, savedBoards]);
+
   return (
     <>
       <div className="saveContainer">
@@ -27,11 +32,16 @@ const SaveLoad = ({ data, setData }: DataProps) => {
           onChange={(e) => setBoardName(e.target.value)}
           placeholder="Enter board name"
         />
-        <button onClick={() => saveBoard(boardName)} disabled={!boardName}>
+        <button
+          onClick={() => saveBoard(boardName)}
+          disabled={!boardName || !isUnsaved}
+        >
           Save Board
         </button>
       </div>
-
+      {isUnsaved ? (
+        <div className="unsaved-disclaimer">There are unsaved changes</div>
+      ) : null}
       {savedBoards.length > 0 && (
         <div className="loadContainer">
           <select

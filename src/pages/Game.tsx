@@ -5,19 +5,35 @@ import Scoreboard from "../components/Scoreboard";
 import { defaultGameData } from "../utils/data";
 import { saveGameState, loadGameState } from "../utils/storage";
 import ResetAnswers from "../components/ResetAnswers";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Game = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const mode = searchParams.get("mode") || "editor";
+
+  const switchMode = (newMode: "editor" | "play") => {
+    const currentParams = new URLSearchParams(window.location.search);
+
+    // Remove mode first to ensure order
+    currentParams.delete("mode");
+
+    // Manually reconstrust string with mode first
+    const newParams = `mode=${newMode}&${currentParams.toString()}`;
+
+    setSearchParams(new URLSearchParams(newParams), { replace: true });
+  };
+
   const [gameState, setGameState] = useState(() => {
     return loadGameState() || defaultGameData;
   });
-  const [showEditor, setShowEditor] = useState(true);
 
   useEffect(() => {
     saveGameState(gameState);
   }, [gameState]);
 
   const handleSelect = (catIndex: number, qIndex: number) => {
-    const newData = { ...gameState };
+    const newData = JSON.parse(JSON.stringify(gameState));
     newData.categories[catIndex].questions[qIndex].revealed = true;
     setGameState(newData);
   };
@@ -27,17 +43,17 @@ const Game = () => {
       <div className="mode-buttons-container">
         <button
           className={`mode-switch-button ${
-            showEditor ? "play-button" : "edit-button"
+            mode === "editor" ? "play-button" : "edit-button"
           }`}
-          onClick={() => setShowEditor(!showEditor)}
+          onClick={() => switchMode(mode === "editor" ? "play" : "editor")}
         >
-          {showEditor ? "Play" : "Edit"}
+          {mode === "editor" ? "Play" : "Edit"}
         </button>
-        {showEditor ? (
+        {mode === "editor" ? (
           <ResetAnswers data={gameState} setData={setGameState} />
         ) : null}
       </div>
-      {showEditor ? (
+      {mode === "editor" ? (
         <Editor data={gameState} setData={setGameState} />
       ) : (
         <>

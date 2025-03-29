@@ -16,6 +16,7 @@ export type Player = {
 };
 
 export type GameData = {
+  boardName: string;
   categories: Category[];
   players: Player[];
 };
@@ -26,6 +27,7 @@ export type DataProps = {
 };
 
 export const defaultGameData: GameData = {
+  boardName: "",
   categories: [],
   players: [{ name: "Placeholder Player 1", score: 0 }],
 };
