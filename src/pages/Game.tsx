@@ -5,7 +5,7 @@ import Scoreboard from "../components/Scoreboard";
 import { defaultGameData } from "../utils/data";
 import { saveGameState, loadGameState } from "../utils/storage";
 import ResetAnswers from "../components/ResetAnswers";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
 const Game = () => {
   const [searchParams, setSearchParams] = useSearchParams();
