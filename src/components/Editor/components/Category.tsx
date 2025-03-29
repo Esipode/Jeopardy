@@ -28,7 +28,7 @@ const Category = ({ data, category, categoryIndex, onUpdate }: Props) => {
       </div>
       {category.questions.map((question, questionIndex) => (
         <Question
-          key={question.question}
+          key={`category-${categoryIndex}-question${questionIndex}`}
           data={data}
           question={question}
           categoryIndex={categoryIndex}
