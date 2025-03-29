@@ -1,0 +1,49 @@
+@use "./variables.scss" as *;
+@use "./mixins.scss" as *;
+
+.saveContainer {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.loadContainer {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  button {
+    @include button-small;
+    background: #a00;
+
+    &:disabled {
+      display: none;
+    }
+  }
+
+  select {
+    padding: 10px;
+    border: 2px solid $border-color;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    color: $text-color;
+    background-color: $input-bg;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+}
+
+input {
+  padding: 10px;
+  border: 2px solid $border-color;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  color: $text-color;
+  background-color: $input-bg;
+  transition: all 0.3s;
+
+  &:focus {
+    border-color: $hover-color;
+    outline: none;
+  }
+}

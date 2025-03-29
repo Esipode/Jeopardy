@@ -1,0 +1,24 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.question-tile {
+  @include flex-center;
+  @include transition;
+  background: rgba($primary-color, 0.8);
+  color: #dd0;
+  font-size: 3rem;
+  cursor: pointer;
+  padding: 10px;
+  text-align: center;
+  font-weight: bold;
+  border: 2px solid $border-color;
+  aspect-ratio: 343/190;
+
+  &:hover {
+    background: $hover-color;
+  }
+
+  &.answered-tile {
+    opacity: 0.5;
+  }
+}

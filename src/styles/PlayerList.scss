@@ -1,0 +1,19 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+.player-list {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+
+    .player {
+        background: $primary-color;
+        color: $text-color;
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: 2px solid $border-color;
+    }
+}

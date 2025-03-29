@@ -1,0 +1,170 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background: $primary-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 200px;
+
+  .editor-separator {
+    border: none;
+    height: 4px;
+    background-color: $hover-color;
+    margin-bottom: 20px;
+  }
+
+  input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: $text-color;
+    margin-bottom: 20px;
+  }
+
+  h3 {
+    font-size: 1.7rem;
+    font-weight: bold;
+    color: $text-color;
+  }
+
+  .category-inputs {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    input {
+      width: 80%;
+      padding: 10px;
+      border: 2px solid $border-color;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      color: $text-color;
+      background-color: $input-bg;
+      transition: all 0.3s;
+
+      &:focus {
+        border-color: $hover-color;
+        outline: none;
+      }
+    }
+
+    button {
+      background-color: $primary-color;
+      color: $text-color;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.2rem;
+      background-color: $hover-color;
+
+      &:disabled {
+        opacity: 0.5;
+      }
+
+      @include button-hover;
+    }
+  }
+}
+
+.inputs-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 30px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 28px;
+  transition: opacity 0.2s ease;
+
+  &.dragging-opacity {
+    opacity: 0.5;
+  }
+
+  .add-player-button {
+    @include button;
+  }
+
+  .header-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .drag-icon {
+      cursor: grab;
+    }
+
+    h3 {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 450px;
+    }
+
+    button {
+      @include button-small;
+    }
+
+    .remove-button {
+      background-color: #a00;
+    }
+  }
+
+  .input-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+
+    .input-wrapper {
+      display: flex;
+      gap: 10px;
+      position: relative;
+      align-items: center;
+
+      button {
+        @include button-small;
+        display: inline;
+        background-color: #a00;
+      }
+
+      &:after {
+        content: attr(label-attr);
+        position: absolute;
+        top: -19px;
+        left: 0px;
+        padding: 0 6px;
+        border-radius: 4px 4px 4px 0;
+        border: 2px solid white;
+        font-size: 0.7rem;
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      input {
+        padding: 10px;
+        border: 2px solid $border-color;
+        border-radius: 0 5px 5px 5px;
+        font-size: 1.2rem;
+        color: $text-color;
+        background-color: $input-bg;
+        transition: all 0.3s;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}
