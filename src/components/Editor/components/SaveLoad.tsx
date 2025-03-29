@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { isEqual } from "lodash";
-import { DataProps } from "../../../utils/data";
+import { DataProps, defaultGameData } from "../../../utils/data";
 import useGameState from "../../../utils/useGameState";
 
 import "../../../styles/SaveLoad.scss";
@@ -15,12 +15,17 @@ const SaveLoad = ({ data, setData }: DataProps) => {
   const [selectedLoadChoice, setSelectedLoadChoice] = useState("");
 
   const isUnsaved = useMemo(() => {
-    const matchingBoardByName = savedBoards.find(
-      (saved) => saved.boardName === boardName
-    );
-    const dataDoesNotMatch = !boardName || !isEqual(matchingBoardByName, data);
+    if (isEqual(data, defaultGameData)) {
+      return false;
+    } else {
+      const matchingBoardByName = savedBoards.find(
+        (saved) => saved.boardName === boardName
+      );
+      const dataDoesNotMatch =
+        !boardName || !isEqual(matchingBoardByName, data);
 
-    return dataDoesNotMatch;
+      return dataDoesNotMatch;
+    }
   }, [data, boardName, savedBoards]);
 
   return (
