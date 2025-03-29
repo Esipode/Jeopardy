@@ -5,7 +5,7 @@ import "./styles/global.scss";
 
 const App = () => {
   return (
-    <Router basename="/Jeopardy">
+    <Router>
       <Routes>
         <Route path="/" element={<Game />} />
       </Routes>
