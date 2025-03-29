@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Category, GameData, JeopardyCell, Player } from "./data";
+import { Category, GameData, Player } from "./data";
 
 const LOCAL_STORAGE_KEY = "jeopardy_boards";
 

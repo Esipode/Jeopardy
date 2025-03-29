@@ -1,4 +1,4 @@
-import { DataProps, GameData } from "../utils/data";
+import { DataProps } from "../utils/data";
 
 import "../styles/Scoreboard.scss";
 
