@@ -1,7 +1,7 @@
 export const saveGameState = (state: object) => {
   try {
     const encodedState = btoa(JSON.stringify(state));
-    const newUrl = `${window.location.origin}?game=${encodedState}`;
+    const newUrl = `${window.location.pathname}?game=${encodedState}`;
     window.history.replaceState(null, "", newUrl);
     localStorage.setItem("jeopardyGameState", JSON.stringify(state));
   } catch (error) {
