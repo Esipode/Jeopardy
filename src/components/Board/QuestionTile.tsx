@@ -20,7 +20,7 @@ const QuestionTile = ({
 }: QuestionTileProps) => {
   return (
     <motion.div
-      key={`${categoryIndex}-${questionIndex}`}
+      key={`${categoryIndex}-${questionIndex}-tile`}
       className={`question-tile ${isSelected ? "active-tile" : ""} ${
         question.revealed ? "answered-tile" : ""
       }`}

@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { isEqual } from "lodash";
 import { DataProps } from "../../../utils/data";
 import { useGameState } from "../../../utils/useGameState";
 
@@ -13,6 +14,10 @@ const SaveLoad = ({ data, setData }: DataProps) => {
   const [boardName, setBoardName] = useState("");
   const [selectedLoadChoice, setSelectedLoadChoice] = useState("");
 
+  // const isUnsaved = useMemo(() => {
+  //   return !savedBoards.find((saved) => isEqual(saved, data));
+  // }, [data]);
+  // console.log(isUnsaved);
   return (
     <>
       <div className="saveContainer">

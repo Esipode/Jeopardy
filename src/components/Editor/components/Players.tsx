@@ -26,7 +26,7 @@ const Players = ({ data, onUpdate }: Props) => {
     <div className="inputs-wrapper">
       <h3>Players</h3>
       {data.players.map((player, i) => (
-        <div key={i} className="input-group">
+        <div key={`player-${i}`} className="input-group">
           <div className="input-wrapper" label-attr={`Player #${i + 1}`}>
             <input
               value={player.name}

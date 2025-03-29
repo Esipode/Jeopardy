@@ -31,7 +31,7 @@ const Scoreboard = ({ data, setData }: DataProps) => {
   return (
     <div className="scoreboard">
       {data.players.map((player, i) => (
-        <div key={i} className="player-score-container">
+        <div key={`player-${i}`} className="player-score-container">
           <div className="score-content-wrapper">
             <span className="player-name">{player.name}</span>
             <div className="score-wrapper">

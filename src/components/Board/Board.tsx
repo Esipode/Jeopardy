@@ -35,12 +35,12 @@ const Board = ({ data, onShowAnswer }: BoardProps) => {
       animate={{ opacity: 1 }}
     >
       {data.categories.map((category, catIndex) => (
-        <div key={catIndex} className="category">
+        <div key={`category-${catIndex}`} className="category">
           <h3 className="category-header">{category.name}</h3>
           <div className="questions">
             {category.questions.map((q, qIndex) => (
               <QuestionTile
-                key={q.question}
+                key={`category-${catIndex}-question-${q.question}`}
                 question={q}
                 categoryIndex={catIndex}
                 questionIndex={qIndex}
