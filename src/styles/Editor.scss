@@ -166,5 +166,20 @@
         }
       }
     }
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      gap: 30px;
+      padding-bottom: 40px;
+      border-bottom: 2px solid white;
+
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    gap: 60px;
   }
 }
