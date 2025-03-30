@@ -61,4 +61,10 @@ input {
   margin-bottom: 8px;
   max-width: fit-content;
   background: #c70;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+
+  &.hide-disclaimer {
+    opacity: 0;
+  }
 }

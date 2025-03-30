@@ -45,9 +45,6 @@ const SaveLoad = ({ data, setData }: DataProps) => {
           Save Board
         </button>
       </div>
-      {isUnsaved ? (
-        <div className="unsaved-disclaimer">There are unsaved changes</div>
-      ) : null}
       {savedBoards.length > 0 && (
         <div className="loadContainer">
           <select
@@ -76,6 +73,11 @@ const SaveLoad = ({ data, setData }: DataProps) => {
           ) : null}
         </div>
       )}
+      <div
+        className={`unsaved-disclaimer ${isUnsaved ? "" : "hide-disclaimer"}`}
+      >
+        There are unsaved changes
+      </div>
     </>
   );
 };

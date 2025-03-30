@@ -12,7 +12,7 @@ const Categories = ({ data, onUpdate }: Props) => {
       {data.categories.map((category, i) => {
         return (
           <Category
-            key={category.name}
+            key={`category-${i}`}
             data={data}
             category={category}
             categoryIndex={i}

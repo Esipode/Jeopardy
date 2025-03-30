@@ -15,10 +15,21 @@ const Category = ({ data, category, categoryIndex, onUpdate }: Props) => {
     onUpdate({ ...data, categories: newCategories });
   };
 
+  const onUpdateCategoryName = (newCategoryName: string) => {
+    const newData = { ...data };
+    newData.categories[categoryIndex].name = newCategoryName;
+    onUpdate(newData);
+  };
+
   return (
     <div className="inputs-wrapper">
       <div className="header-wrapper">
-        <h3>{category.name}</h3>
+        <input
+          className="category-input"
+          value={category.name}
+          onChange={(e) => onUpdateCategoryName(e.target.value)}
+          placeholder="Category Name"
+        />
         <button
           className="remove-button"
           onClick={() => removeCategory(data, categoryIndex)}
