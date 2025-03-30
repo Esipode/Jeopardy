@@ -7,6 +7,12 @@
   margin-bottom: 10px;
 }
 
+.save-button {
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
 .loadContainer {
   display: flex;
   gap: 10px;

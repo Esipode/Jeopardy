@@ -38,6 +38,7 @@ const SaveLoad = ({ data, setData }: DataProps) => {
           placeholder="Enter board name"
         />
         <button
+          className="save-button"
           onClick={() => saveBoard(boardName)}
           disabled={!boardName || !isUnsaved}
         >
@@ -64,7 +65,14 @@ const SaveLoad = ({ data, setData }: DataProps) => {
             ))}
           </select>
           {selectedLoadChoice ? (
-            <button onClick={() => deleteBoard(boardName)}>Delete</button>
+            <button
+              onClick={() => {
+                setSelectedLoadChoice("");
+                deleteBoard(boardName);
+              }}
+            >
+              Delete
+            </button>
           ) : null}
         </div>
       )}
