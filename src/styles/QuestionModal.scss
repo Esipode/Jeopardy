@@ -31,6 +31,10 @@
   font-size: 3rem;
   font-weight: bold;
   color: $text-color;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.6rem;
+  }
 }
 
 .closeButton {
@@ -71,4 +75,8 @@
   margin-top: 10px;
   font-size: 2rem;
   color: #dd0;
+
+  @media screen and (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 }
